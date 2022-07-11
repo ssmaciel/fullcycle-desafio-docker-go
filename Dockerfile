@@ -10,7 +10,7 @@ RUN ls -a
 # Executando comando de build
 RUN GOOS=linux go build main.go
 
-from alpine:3.16 as prod
+FROM scratch as prod
 
 # Definindo diretório de trabalho
 WORKDIR /go/src/app
@@ -18,3 +18,4 @@ WORKDIR /go/src/app
 COPY --from=builder /go/src/app .
 
 ENTRYPOINT [ "./main" ]
+
